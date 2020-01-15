@@ -6,6 +6,8 @@
 #include "BattleManiaEnum.h"
 #include "BattleManiaStruct.h"
 #include "BattleManiaMovement.h"
+#include "AbilitySystemInterface.h"
+#include "GameplayTagContainer.h"
 
 #include <GameFramework/Character.h>
 #include <Components/TimelineComponent.h>
@@ -20,7 +22,7 @@ class UPointOfInterest;
 
  
 UCLASS()
-class BATTLEMANIA_API ABattleManiaCharacter : public ACharacter
+class BATTLEMANIA_API ABattleManiaCharacter : public ACharacter, public IAbilitySystemInterface
 {
 
 	GENERATED_BODY()
@@ -438,9 +440,14 @@ private:
 	UPROPERTY()
 	UTimelineComponent* CameraLerpTimeline;
 
+	TWeakObjectPtr<class UBattleManiaAbilitySystemComponent> AbilitySystemComponent;
+
 public:
 
 	FORCEINLINE UBattleManiaMovement* GetBattleManiaMovement() const { return Cast<UBattleManiaMovement>(GetCharacterMovement()); };
 
+public:
+	// Implement IAbilitySystemInterface
+	virtual class UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 };
 

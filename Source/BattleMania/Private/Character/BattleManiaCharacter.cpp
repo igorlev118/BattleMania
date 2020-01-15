@@ -1,9 +1,9 @@
-
-
 #include "BattleManiaCharacter.h"
 #include "BattleManiaAnimInstance.h"
 #include "BattleManiaAnimInstanceIK.h"
 #include "PlayerInfoWidget.h"
+#include "Character/Abilities/BattleManiaAbilitySystemComponent.h"
+#include "Character/Abilities/BattleManiaGameplayAbility.h"
 
 #include <Camera/CameraComponent.h>
 #include <Components/ArrowComponent.h>
@@ -1847,3 +1847,7 @@ bool ABattleManiaCharacter::RagdollLineTrace(FVector InLocation, FRotator InRota
 }
 
 
+UAbilitySystemComponent* ABattleManiaCharacter::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent.Get();
+}

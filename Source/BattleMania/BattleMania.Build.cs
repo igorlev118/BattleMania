@@ -18,7 +18,10 @@ public class BattleMania : ModuleRules
             "SlateCore"
         });
 
-        PrivateDependencyModuleNames.AddRange(new string[] { "MiniMapModule" });
+        PrivateDependencyModuleNames.AddRange(new string[] { "MiniMapModule",
+            "GameplayAbilities",
+            "GameplayTags",
+            "GameplayTasks" });
 
     }
 }
